@@ -25,16 +25,46 @@
 							"type": "BinaryReadSettings"
 						}
 					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "DS_Input",
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_patam_src_folderPath": {
+								"value": "@pipeline().parameters.pl_param_folderPath",
+								"type": "Expression"
+							},
+							"ds_patam_src_filename": {
+								"value": "@pipeline().parameters.pl_param_fileName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Output",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
+		"parameters": {
+			"pl_param_folderPath": {
+				"type": "string"
+			},
+			"pl_param_fileName": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
