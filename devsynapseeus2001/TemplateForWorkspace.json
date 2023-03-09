@@ -12,10 +12,6 @@
 			"metadata": "Secure string for 'connectionString' of 'devsynapseeus2001-WorkspaceDefaultSqlServer'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:devsynapseeus2001.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
-		"trigger_storage_id": {
-			"type": "string",
-			"defaultValue": ""
-		},
 		"DS_Input_properties_linkedServiceName_reference": {
 			"type": "string",
 			"defaultValue": "ADLS_Input"
@@ -45,6 +41,10 @@
 			"defaultValue": "testpool"
 		},
 		"Notebook 2_properties_bigDataPool_bigDataPoolReference": {
+			"type": "string",
+			"defaultValue": "testpool"
+		},
+		"Notebook 3_properties_bigDataPool_bigDataPoolReference": {
 			"type": "string",
 			"defaultValue": "testpool"
 		}
@@ -300,7 +300,7 @@
 				"typeProperties": {
 					"blobPathBeginsWith": "/input/blobs/",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('trigger_storage_id')]",
+					"scope": "/subscriptions/be7051ef-9485-4207-b746-9f6a24b3cc8a/resourceGroups/devsynapserg/providers/Microsoft.Storage/storageAccounts/pocteladoc",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
@@ -476,6 +476,71 @@
 						"cell_type": "code",
 						"source": [
 							"print (hello)"
+						],
+						"outputs": [],
+						"execution_count": null
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/Notebook 3')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "[parameters('Notebook 3_properties_bigDataPool_bigDataPoolReference')]",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "28g",
+					"driverCores": 4,
+					"executorMemory": "28g",
+					"executorCores": 4,
+					"numExecutors": 2,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "false",
+						"spark.dynamicAllocation.minExecutors": "2",
+						"spark.dynamicAllocation.maxExecutors": "2",
+						"spark.autotune.trackingId": "cc92604d-78b5-432f-8f2f-d15551964d50"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "python"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/be7051ef-9485-4207-b746-9f6a24b3cc8a/resourceGroups/devsynapserg/providers/Microsoft.Synapse/workspaces/devsynapseeus2001/bigDataPools/testpool",
+						"name": "testpool",
+						"type": "Spark",
+						"endpoint": "https://devsynapseeus2001.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/testpool",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "3.3",
+						"nodeCount": 10,
+						"cores": 4,
+						"memory": 28,
+						"automaticScaleJobs": false
+					},
+					"sessionKeepAliveTimeout": 30
+				},
+				"cells": [
+					{
+						"cell_type": "code",
+						"metadata": {},
+						"source": [
+							"print (I am fine)"
 						],
 						"outputs": [],
 						"execution_count": null
