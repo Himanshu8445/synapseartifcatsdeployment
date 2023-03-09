@@ -30,7 +30,7 @@
 			"value": "testpool"
 		},
 		"trigger_storage_id": {
-			"value": "/subscriptions/be7051ef-9485-4207-b746-9f6a24b3cc8a/resourceGroups/devsynapserg/providers/Microsoft.Storage/storageAccounts/devstracceus2001"
+			"value": "/subscriptions/be7051ef-9485-4207-b746-9f6a24b3cc8a/resourceGroups/devsynapserg/providers/Microsoft.Storage/storageAccounts/pocteladoc"
 		}
 	}
 }
