@@ -12,7 +12,11 @@
 			"metadata": "Secure string for 'connectionString' of 'devsynapseeus2001-WorkspaceDefaultSqlServer'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:devsynapseeus2001.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
-		"devsynapseeus2001-WorkspaceDefaultStorage_properties_typeProperties_url": {
+		"devsynapseeus2001-WorkspaceDefaultSqlServer_properties_typeProperties_connectionString": {
+			"type": "string",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:devsynapseeus2001.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"devsynapseeus2001-WorkspaceDefaultStorage_properties_typeProperties_blobEndpointUri": {
 			"type": "string",
 			"defaultValue": "https://devstracceus2001.dfs.core.windows.net"
 		}
@@ -34,7 +38,10 @@
 				"annotations": [],
 				"type": "AzureSqlDW",
 				"typeProperties": {
-					"connectionString": "[parameters('devsynapseeus2001-WorkspaceDefaultSqlServer_connectionString')]"
+					"connectionString": {
+						"type": "SecureString",
+						"value": "[parameters('devsynapseeus2001-WorkspaceDefaultSqlServer_properties_typeProperties_connectionString')]"
+					}
 				},
 				"connectVia": {
 					"referenceName": "AutoResolveIntegrationRuntime",
@@ -53,7 +60,7 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('devsynapseeus2001-WorkspaceDefaultStorage_properties_typeProperties_url')]"
+					"url": "[parameters('devsynapseeus2001-WorkspaceDefaultStorage_properties_typeProperties_blobEndpointUri')]"
 				},
 				"connectVia": {
 					"referenceName": "AutoResolveIntegrationRuntime",
