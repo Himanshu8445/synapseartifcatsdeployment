@@ -8,11 +8,26 @@
 		"devsynapseeus2001-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:devsynapseeus2001.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
+		"DS_Input_properties_linkedServiceName_reference": {
+			"value": "ADLS_Input"
+		},
+		"DS_Output_properties_linkedServiceName_reference": {
+			"value": "LS_ADLS_Output"
+		},
+		"ADLS_Input_properties_typeProperties_blobEndpointUri": {
+			"value": "https://pocteladoc.dfs.core.windows.net/"
+		},
+		"LS_ADLS_Output_properties_typeProperties_blobEndpointUri": {
+			"value": "https://pocteladoc.dfs.core.windows.net/"
+		},
 		"devsynapseeus2001-WorkspaceDefaultSqlServer_properties_typeProperties_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:devsynapseeus2001.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
 		"devsynapseeus2001-WorkspaceDefaultStorage_properties_typeProperties_blobEndpointUri": {
 			"value": "https://devstracceus2001.dfs.core.windows.net"
+		},
+		"Notebook 1_properties_bigDataPool_bigDataPoolReference": {
+			"value": "testpool"
 		}
 	}
 }
