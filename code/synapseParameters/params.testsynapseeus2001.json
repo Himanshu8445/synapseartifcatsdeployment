@@ -7,6 +7,30 @@
 		},
 		"devsynapseeus2001-WorkspaceDefaultSqlServer_connectionString": {
 			"value": ""
+		},
+		"DS_Input_properties_linkedServiceName_reference": {
+			"value": "ADLS_Input"
+		},
+		"DS_Output_properties_linkedServiceName_reference": {
+			"value": "LS_ADLS_Output"
+		},
+		"ADLS_Input_properties_typeProperties_blobEndpointUri": {
+			"value": "https://teststraccsyneus2001.dfs.core.windows.net/"
+		},
+		"LS_ADLS_Output_properties_typeProperties_blobEndpointUri": {
+			"value": "https://teststraccsyneus2001.dfs.core.windows.net/"
+		},
+		"devsynapseeus2001-WorkspaceDefaultSqlServer_properties_typeProperties_connectionString": {
+			"value": ""
+		},
+		"devsynapseeus2001-WorkspaceDefaultStorage_properties_typeProperties_blobEndpointUri": {
+			"value": "https://teststraccsyneus2001.dfs.core.windows.net"
+		},
+		"Notebook 1_properties_bigDataPool_bigDataPoolReference": {
+			"value": "testpool"
+		},
+		"trigger_storage_id": {
+			"value": "/subscriptions/be7051ef-9485-4207-b746-9f6a24b3cc8a/resourceGroups/testsynapserg/providers/Microsoft.Storage/storageAccounts/teststraccsyneus2001"
 		}
 	}
 }
