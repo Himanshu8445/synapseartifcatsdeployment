@@ -1,0 +1,32 @@
+{
+	"name": "DS_Input",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_Input",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ds_patam_src_folderPath": {
+				"type": "string"
+			},
+			"ds_patam_src_filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().ds_patam_src_filename",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().ds_patam_src_folderPath",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
